@@ -27,6 +27,7 @@ int					ft_isalpha(int c);
 int					ft_islower(int c);
 int					ft_isupper(int c);
 int					ft_isdigit(int c);
+int					ft_isdigit_str(char *str);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
