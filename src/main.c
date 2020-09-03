@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/lem_in.h"
+#include "lem_in.h"
 
 void			init_lem(t_lem **lem)
 {
@@ -25,7 +25,7 @@ int				main()
 	t_lem 		*lem;
 
 	init_lem(&lem);
-	parse(lem);
+	parseMap(lem);
 
 	printf("it works!");
 	return (0);
