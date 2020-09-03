@@ -12,9 +12,21 @@
 
 #include "includes/lem_in.h"
 
-int		main()
+void			init_lem(t_lem **lem)
 {
-	printf("Hello!");
-	printf("\nhi!\n");
+	if (!(*lem = (t_lem *)malloc(sizeof(t_lem))))
+		exit(1);
+	(*lem)->countAnts = 0;
+	(*lem)->map = NULL;
+}
+
+int				main()
+{
+	t_lem 		*lem;
+
+	init_lem(&lem);
+	parse(lem);
+
+	printf("it works!");
 	return (0);
 }
