@@ -57,4 +57,5 @@ void	parseLinksRooms(t_lem *lem, char *line)
         }
     }
 
+
 }

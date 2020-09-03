@@ -68,4 +68,5 @@ char   *parseRooms(t_lem *lem)
         tmp->next = room;
         tmp = room;
     }
+
 }
