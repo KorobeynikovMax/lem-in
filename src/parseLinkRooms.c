@@ -15,6 +15,7 @@
 int     isValidLink(char *line, char **r1, char **r2)
 {
     char		**split;
+    char        *p;
 
     if (*line == '#')
         return (1);
@@ -22,6 +23,16 @@ int     isValidLink(char *line, char **r1, char **r2)
     if ((!split[0] || split[0][0] == 'L') && (!split[1] || split[1][0] == 'L'))
         return (0);
     if (!(split[2] == NULL))
+        return (0);
+    p = split[0];
+    while (*p && !(*p == '\r' || *p == '\n' || *p == ' ' || *p == '\t'))
+        p++;
+    if (*p == '\r' || *p == '\n' || *p == ' ' || *p == '\t')
+        return (0);
+    p = split[1];
+    while (*p && !(*p == '\r' || *p == '\n' || *p == ' ' || *p == '\t'))
+        p++;
+    if (*p == '\r' || *p == '\n' || *p == ' ' || *p == '\t')
         return (0);
     *r1 = split[0];
     *r2 = split[1];
@@ -34,7 +45,7 @@ void	parseLinksRooms(t_lem *lem, char *line)
     char        *r1;
     char        *r2;
 
-    if (isValidLink(line, &r1, &r2))
+    if (!isValidLink(line, &r1, &r2))
         exitWithNotValidMap();
     while (ft_get_next_line(0, &str))
     {
