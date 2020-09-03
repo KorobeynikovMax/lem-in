@@ -6,13 +6,13 @@
 /*   By: bedavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 14:53:34 by bedavis           #+#    #+#             */
-/*   Updated: 2020/09/03 12:22:23 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/03 13:35:55 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "includes/lem_in.h"
 
-int		main(int argc, char **argv)
+int		main()
 {
 	printf("Hello!");
 	printf("\nhi!\n");
