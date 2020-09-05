@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   solution.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bedavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/02 14:53:34 by bedavis           #+#    #+#             */
-/*   Updated: 2020/09/03 13:35:55 by wanton           ###   ########.fr       */
+/*   Created: 2020/09/05 15:19:24 by bedavis           #+#    #+#             */
+/*   Updated: 2020/09/05 15:19:26 by bedavis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void			init_lem(t_lem **lem)
+void    solve(t_lem *lem)
 {
-	if (!(*lem = (t_lem *)malloc(sizeof(t_lem))))
-		exit(1);
-	(*lem)->countAnts = 0;
-	(*lem)->map = NULL;
-    (*lem)->paths = NULL;
-}
+    t_paths_list *pathsList;
 
-int				main()
-{
-	t_lem 		*lem;
-
-	init_lem(&lem);
-	parseMap(lem);
-	solve(lem);
-	printf("it works!");
-	return (0);
+    
+    ft_putstr("here print result\n");
+    return;
 }
 
