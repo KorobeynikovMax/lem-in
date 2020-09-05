@@ -95,16 +95,16 @@ void	            parseLinksRooms(t_lem *lem, char *line)
     char            *r2;
 
     if (!isValidLink(line, &r1, &r2))
-        exitWithNotValidMap();
+        exit_with_not_valid_map();
     while (1)
     {
         if (line[0] == '\0')
             break;
         if (!isValidLink(line, &r1, &r2))
-            exitWithNotValidMap();
+			exit_with_not_valid_map();
         else
             addLink(lem, r1, r2);
         if (ft_get_next_line(0, &line) == -1)
-            exitWithReadError();
+			exit_with_not_valid_map();
     }
 }

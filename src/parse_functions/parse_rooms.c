@@ -45,7 +45,7 @@ char   *parseRooms(t_lem *lem)
     while (1)
     {
         if (ft_get_next_line(0, &line) == -1)
-            exitWithReadError();
+            exit_with_read_error();
         if (check_mod(lem, line, &start_end_mod) == 1)
         {
             free(line);
