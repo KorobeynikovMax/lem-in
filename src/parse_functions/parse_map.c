@@ -6,7 +6,7 @@
 /*   By: wanton <wanton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:53:57 by wanton            #+#    #+#             */
-/*   Updated: 2020/09/05 17:02:30 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/05 17:56:15 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ char		*get_read_line()
 
 	while (1)
 	{
-		if (ft_get_next_line(0, &line) == -1)
-			exit_with_read_error();
+		pft_get_next_line(DESCRIPTOR, &line);
 		if (line[0] != '#')
 			return (line);
 		free(line);
@@ -39,5 +38,8 @@ void		parse_count_ants(t_lem *lem)
 
 void		parse_map(t_lem *lem)
 {
+	char		*line;
+
 	parse_count_ants(lem);
+	line = parse_rooms(lem);
 }

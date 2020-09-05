@@ -22,6 +22,7 @@
 size_t				ft_strlen(const char *str);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 size_t				ft_strpos(const char *s, char c);
+size_t				ft_len_char_array(char **buff);
 
 int					ft_isalpha(int c);
 int					ft_islower(int c);
