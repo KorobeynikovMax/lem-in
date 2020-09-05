@@ -50,7 +50,8 @@ t_room              *findRoom(t_lem *lem, char *room)
     tmp = lem->map;
     if (tmp == NULL)
         return (NULL);
-    while (!(ft_strcmp(tmp->name, room) == 0)) {
+    while (!(ft_strcmp(tmp->name, room) == 0))
+    {
         if (tmp->next == NULL)
             return (NULL);
         tmp = tmp->next;
