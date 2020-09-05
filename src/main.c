@@ -16,7 +16,7 @@ void			init_lem(t_lem **lem)
 {
 	if (!(*lem = (t_lem *)malloc(sizeof(t_lem))))
 		exit(1);
-	(*lem)->countAnts = 0;
+	(*lem)->count_ants = 0;
 	(*lem)->map = NULL;
     (*lem)->paths = NULL;
 }
@@ -26,7 +26,7 @@ int				main()
 	t_lem 		*lem;
 
 	init_lem(&lem);
-	parseMap(lem);
+	parse_map(lem);
 	solve(lem);
 	printf("it works!");
 	return (0);

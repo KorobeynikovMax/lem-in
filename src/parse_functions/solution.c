@@ -19,7 +19,7 @@ t_room              *findStartEndRoom(t_lem *lem, int flag)
     tmp = lem->map;
     if (tmp == NULL)
         return (NULL);
-    while (!(tmp->start_endFlag == flag))
+    while (!(tmp->start_end_flag == flag))
     {
         if (tmp->next == NULL)
             return (NULL);
