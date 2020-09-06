@@ -6,7 +6,7 @@
 /*   By: wanton <wanton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:53:57 by wanton            #+#    #+#             */
-/*   Updated: 2020/09/05 17:56:15 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/06 15:57:36 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ void		parse_count_ants(t_lem *lem)
 
 void		parse_map(t_lem *lem)
 {
+	char		*line;
+
 	parse_count_ants(lem);
-	/*parse_rooms(lem);*/
+	line = parse_rooms(lem);
+	free(line);
 }
