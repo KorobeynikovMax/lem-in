@@ -6,7 +6,7 @@
 /*   By: bedavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 14:53:34 by bedavis           #+#    #+#             */
-/*   Updated: 2020/09/03 13:35:55 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/06 14:25:35 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ void			init_lem(t_lem **lem)
 		exit(1);
 	(*lem)->count_ants = 0;
 	(*lem)->map = NULL;
-    (*lem)->paths = NULL;
+	(*lem)->paths = NULL;
+	(*lem)->start_room = NULL;
+	(*lem)->end_room = NULL;
 }
 
 int				main()
@@ -27,7 +29,7 @@ int				main()
 
 	init_lem(&lem);
 	parse_map(lem);
-	solve(lem);
+	/*solve(lem);*/
 	printf("it works!");
 	return (0);
 }

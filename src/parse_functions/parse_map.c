@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-char		*get_read_line()
+static char		*skip_comments_and_get_line()
 {
 	char		*line;
 
@@ -25,21 +25,24 @@ char		*get_read_line()
 	}
 }
 
+static void		check_valid_line(char *line)
+{
+	if (ft_isdigit_str(line) == 0)
+		exit_with_not_valid_map();
+}
+
 void		parse_count_ants(t_lem *lem)
 {
 	char		*line;
 
-	line = get_read_line();
-	if (ft_isdigit_str(line) == 0)
-		exit_with_not_valid_map();
+	line = skip_comments_and_get_line();
+	check_valid_line(line);
 	lem->count_ants = ft_atoi(line);
 	free(line);
 }
 
 void		parse_map(t_lem *lem)
 {
-	char		*line;
-
 	parse_count_ants(lem);
-	line = parse_rooms(lem);
+	/*parse_rooms(lem);*/
 }
