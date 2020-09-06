@@ -21,3 +21,31 @@ void		free_char_buff(char **buff)
 		free(buff[i++]);
 	free(buff);
 }
+
+void		free_t_room(t_room *room)
+{
+	t_room		*p;
+
+	p = room;
+	while (p != NULL)
+	{
+		p->links = NULL;
+		p = p->next;
+	}
+	p = room;
+	while (p != NULL)
+	{
+		free(room->name);
+		room = room->next;
+		free(p);
+		p = room;
+	}
+}
+
+void		free_t_lem(t_lem *lem)
+{
+	lem->start_room = NULL;
+	lem->end_room = NULL;
+	free_t_room(lem->map);
+	free(lem);
+}

@@ -6,7 +6,7 @@
 /*   By: bedavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 14:53:34 by bedavis           #+#    #+#             */
-/*   Updated: 2020/09/06 15:55:53 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/06 15:57:21 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int				main()
 	printf("it works!\n");
 	print_number_of_ants(lem);
 	print_t_room(lem);
+	free_t_lem(lem);
 	return (0);
 }
 
