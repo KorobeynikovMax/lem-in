@@ -25,11 +25,19 @@ void		free_char_buff(char **buff)
 void		free_t_room(t_room *room)
 {
 	t_room		*p;
+	t_room_address *tmp;
+	t_room_address *tmp2;
 
 	p = room;
 	while (p != NULL)
 	{
-		p->links = NULL;
+		tmp = p->links;
+		while (tmp != NULL)
+        {
+		    tmp2 = tmp;
+		    tmp = tmp->next;
+            free(tmp2);
+        }
 		p = p->next;
 	}
 	p = room;

@@ -54,5 +54,6 @@ void		parse_map(t_lem *lem)
 
 	parse_count_ants(lem);
 	line = parse_rooms(lem);
-	free(line);
+	parseLinksRooms(lem, line);
+	//free(line);
 }

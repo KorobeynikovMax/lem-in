@@ -29,6 +29,19 @@ void			print_number_of_ants(t_lem *lem)
 	ft_putchar('\n');
 }
 
+void            print_room_links(t_room *room)
+{
+        t_room_address *tmp;
+
+        ft_putstr(" paths:");
+        tmp = room->links;
+        while (tmp != NULL)
+        {
+            ft_putstr(tmp->address->name);
+            tmp = tmp->next;
+        }
+}
+
 void			print_t_room(t_lem *lem)
 {
 	t_room		*room;
@@ -41,6 +54,7 @@ void			print_t_room(t_lem *lem)
 		ft_putnbr(room->x_coord);
 		ft_putchar(' ');
 		ft_putnbr(room->y_coord);
+        print_room_links(room);
 		ft_putchar('\n');
 		room = room->next;
 	}

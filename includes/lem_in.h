@@ -94,6 +94,7 @@ void						pft_str_split(char ***buff, char *line);
 */
 
 void						free_char_buff(char **buff);
+void                        free_t_lem(t_lem *lem);
 
 /*
 **t_room functions
@@ -101,5 +102,8 @@ void						free_char_buff(char **buff);
 
 void						add_new_room(t_room **last_room, t_lem *lem,
 					   char *line, int mod);
+
+int                         check_comment(const char *line);
+
 
 #endif
