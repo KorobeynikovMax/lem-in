@@ -66,7 +66,7 @@ int				main()
 
 	init_lem(&lem);
 	parse_map(lem);
-	/*solve(lem);*/
+	solve(lem);
 	printf("it works!\n");
 	print_number_of_ants(lem);
 	print_t_room(lem);
