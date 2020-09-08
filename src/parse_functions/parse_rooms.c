@@ -6,13 +6,13 @@
 /*   By: wanton <wanton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 17:39:13 by wanton            #+#    #+#             */
-/*   Updated: 2020/09/06 15:55:53 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/08 12:00:41 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static void		looking_for_double_and_exit(t_lem *lem, char *line)
+void		looking_for_double_and_exit(t_lem *lem, char *line)
 {
 	t_room	*room;
 	char	**buff;
@@ -34,7 +34,7 @@ static void		looking_for_double_and_exit(t_lem *lem, char *line)
 	free_char_buff(buff);
 }
 
-static int		check_valid_room(char *line, t_lem *lem)
+int			check_valid_room(char *line, t_lem *lem)
 {
 	char		**buff;
 	int			res;
@@ -52,7 +52,7 @@ static int		check_valid_room(char *line, t_lem *lem)
 	return (res);
 }
 
-static int		check_modifier(int *start_end_flag, const char *line)
+int			check_modifier(int *start_end_flag, const char *line)
 {
 	if (ft_strcmp(line, "##start") == 0)
 	{
@@ -67,17 +67,15 @@ static int		check_modifier(int *start_end_flag, const char *line)
 	return (0);
 }
 
-static int		check_valid_comment_and_exit(const char *line)
+void		check_start_end_room_and_exit(t_lem *lem)
 {
-	if (line[0] != '#')
-		return (0);
-	else if (line[0] == '#' && line[1] != '#')
-		return (1);
-	exit_with_not_valid_map();
-	return (0);
+	if (lem->start_room == NULL
+	|| lem->end_room == NULL
+	|| lem->start_room == lem->end_room)
+		exit_with_not_valid_map();
 }
 
-char			*parse_rooms(t_lem *lem)
+char		*parse_rooms(t_lem *lem)
 {
 	char		*line;
 	int			start_end_flag;
@@ -93,7 +91,7 @@ char			*parse_rooms(t_lem *lem)
 		pft_get_next_line(DESCRIPTOR, &line);
 		if (check_modifier(&start_end_flag, line) == 1)
 			continue ;
-		if (check_valid_comment_and_exit(line) == 1)
+		if (check_comment(line) == 1)
 			continue ;
 		if (check_valid_room(line, lem) == 1)
 			break ;
@@ -101,5 +99,6 @@ char			*parse_rooms(t_lem *lem)
 		add_new_room(&last_room, lem, line, start_end_flag);
 		start_end_flag = 0;
 	}
+	check_start_end_room_and_exit(lem);
 	return (line);
 }

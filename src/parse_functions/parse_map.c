@@ -6,26 +6,33 @@
 /*   By: wanton <wanton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:53:57 by wanton            #+#    #+#             */
-/*   Updated: 2020/09/06 15:57:36 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/08 12:00:41 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static char		*skip_comments_and_get_line()
+int		check_comment(const char *line)
+{
+	if (line[0] != '#')
+		return (0);
+	return (1);
+}
+
+char		*skip_comments_and_get_line()
 {
 	char		*line;
 
 	while (1)
 	{
 		pft_get_next_line(DESCRIPTOR, &line);
-		if (line[0] != '#')
+		if (check_comment(line) == 0)
 			return (line);
 		free(line);
 	}
 }
 
-static void		check_valid_line(char *line)
+void		check_valid_line(char *line)
 {
 	if (ft_isdigit_str(line) == 0)
 		exit_with_not_valid_map();
