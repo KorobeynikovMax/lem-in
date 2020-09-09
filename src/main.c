@@ -6,7 +6,7 @@
 /*   By: bedavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 14:53:34 by bedavis           #+#    #+#             */
-/*   Updated: 2020/09/06 15:57:21 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/09 17:21:41 by maxim            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void            print_room_links(t_room *room)
 {
         t_room_address *tmp;
 
-        ft_putstr(" paths:");
+        ft_putstr(" links:");
         tmp = room->links;
         while (tmp != NULL)
         {
@@ -55,6 +55,8 @@ void			print_t_room(t_lem *lem)
 		ft_putchar(' ');
 		ft_putnbr(room->y_coord);
         print_room_links(room);
+        ft_putstr(" visit:");
+        ft_putnbr(room->visit_flag);
 		ft_putchar('\n');
 		room = room->next;
 	}
