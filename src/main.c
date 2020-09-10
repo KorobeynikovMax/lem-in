@@ -21,6 +21,7 @@ void			init_lem(t_lem **lem)
 	(*lem)->paths = NULL;
 	(*lem)->start_room = NULL;
 	(*lem)->end_room = NULL;
+	(*lem)->hasPath = 0;
 }
 
 void			print_number_of_ants(t_lem *lem)

@@ -27,6 +27,7 @@ t_room		*new_room(char *line, int mod)
 	room->visit_flag = 0;
 	room->start_end_flag = mod;
 	room->next = NULL;
+	room->links = NULL;
 	free_char_buff(buff);
 	return (room);
 }

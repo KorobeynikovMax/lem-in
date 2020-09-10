@@ -57,6 +57,7 @@ struct						s_lem
 	t_room					*start_room;
 	t_room					*end_room;
 	t_paths_list            *paths;
+	int						hasPath;
 };
 
 /*
