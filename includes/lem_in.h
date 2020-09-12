@@ -35,7 +35,7 @@ struct						s_room
 	int						visit_flag;
 	int						start_end_flag;
 	t_room_address			*links;
-	struct s_room           *next;
+	struct s_room			*next;
 };
 
 struct						s_room_address
@@ -47,7 +47,7 @@ struct						s_room_address
 struct						s_paths_list
 {
     t_room_address 			*path;
-    struct s_paths_list     *next;
+    struct s_paths_list		*next;
 };
 
 struct						s_lem
@@ -56,7 +56,7 @@ struct						s_lem
 	t_room					*map;
 	t_room					*start_room;
 	t_room					*end_room;
-	t_paths_list            *paths;
+	t_paths_list			*paths;
 	int						hasPath;
 };
 
@@ -95,16 +95,40 @@ void						pft_str_split(char ***buff, char *line);
 */
 
 void						free_char_buff(char **buff);
-void                        free_t_lem(t_lem *lem);
+void						free_t_lem(t_lem *lem);
 
 /*
 **t_room functions
 */
 
 void						add_new_room(t_room **last_room, t_lem *lem,
-					   char *line, int mod);
+					char *line, int mod);
 
-int                         check_comment(const char *line);
+int							check_comment(const char *line);
 
+/*
+**find path functions
+*/
+
+void 						add_in_paths_list(t_paths_list **list,
+							 t_room_address *cur);
+t_room_address				*find_path(t_lem *lem);
+t_room						*find_next(t_room *room, int index);
+
+/*
+**put indexes in algo functions
+*/
+void						delete_room_links(t_room *room);
+void						addInRoomList(t_room_address **list, t_room *room);
+
+/*
+**put indexes in algo functions
+*/
+
+int 						count_of_rooms(t_lem *lem);
+void						put_numbers(t_lem *lem);
+int							put_numbers_from_links(t_room_address *address,
+								 int index);
+void						set_all_visit(t_lem *lem, int visit_flag);
 
 #endif
