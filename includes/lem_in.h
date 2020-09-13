@@ -6,7 +6,7 @@
 /*   By: wanton <wanton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 17:04:12 by wanton            #+#    #+#             */
-/*   Updated: 2020/09/05 19:26:37 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/13 14:55:43 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ struct						s_room_address
 
 struct						s_paths_list
 {
-    t_room_address 			*path;
-    struct s_paths_list		*next;
+	t_room_address			*path;
+	struct s_paths_list		*next;
 };
 
 struct						s_lem
