@@ -6,7 +6,7 @@
 /*   By: wanton <wanton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 17:04:12 by wanton            #+#    #+#             */
-/*   Updated: 2020/09/13 14:55:43 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/13 15:58:06 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct				s_room			t_room;
 typedef struct				s_room_address	t_room_address;
 typedef struct				s_lem			t_lem;
 typedef struct				s_paths_list	t_paths_list;
+typedef struct				s_ant_position	t_ants_position;
 
 struct						s_room
 {
@@ -58,6 +59,12 @@ struct						s_lem
 	t_room					*end_room;
 	t_paths_list			*paths;
 	int						hasPath;
+};
+
+struct						s_ant_position
+{
+	int						path_number;
+	int						room_number;
 };
 
 /*
@@ -107,28 +114,38 @@ void						add_new_room(t_room **last_room, t_lem *lem,
 int							check_comment(const char *line);
 
 /*
+**t_room_address functions
+*/
+
+int							count_rooms(t_room_address *path);
+
+/*
 **find path functions
 */
 
 void 						add_in_paths_list(t_paths_list **list,
 							 t_room_address *cur);
-t_room_address				*find_path(t_lem *lem);
 t_room						*find_next(t_room *room, int index);
+t_room_address				*find_path(t_lem *lem);
+t_room_address				*get_path_by_index(t_paths_list *paths, int index);
 
 /*
 **put indexes in algo functions
 */
+
+int							put_numbers_from_links(t_room_address *address,
+													  int index);
+int 						count_of_rooms(t_lem *lem);
 void						delete_room_links(t_room *room);
 void						addInRoomList(t_room_address **list, t_room *room);
-
-/*
-**put indexes in algo functions
-*/
-
-int 						count_of_rooms(t_lem *lem);
 void						put_numbers(t_lem *lem);
-int							put_numbers_from_links(t_room_address *address,
-								 int index);
 void						set_all_visit(t_lem *lem, int visit_flag);
 
+/*
+**Function for move and print ants
+*/
+
+void						ants_distributor(t_lem *lem, t_paths_list *paths);
+
 #endif
+

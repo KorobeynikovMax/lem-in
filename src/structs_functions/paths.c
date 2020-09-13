@@ -6,7 +6,7 @@
 /*   By: bedavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 17:10:48 by bedavis           #+#    #+#             */
-/*   Updated: 2020/09/12 17:10:50 by bedavis          ###   ########.fr       */
+/*   Updated: 2020/09/13 15:33:01 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,23 @@ t_room_address 		*find_path(t_lem *lem)
 	if (result != NULL && result->address->start_end_flag == START_ROOM_MODIFIER)
 		lem->hasPath = 1;
 	return (result);
+}
+
+t_room_address		*get_path_by_index(t_paths_list *paths, int index)
+{
+	int				i;
+	t_paths_list	*p;
+	t_room_address	*path;
+
+	i = 0;
+	p = paths;
+	while (p != NULL)
+	{
+		path = p->path;
+		if (i == index)
+			return (path);
+		i++;
+		p = p->next;
+	}
+	return (NULL);
 }
