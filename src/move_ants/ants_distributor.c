@@ -6,7 +6,7 @@
 /*   By: wanton <wanton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 15:16:57 by wanton            #+#    #+#             */
-/*   Updated: 2020/09/13 17:04:07 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/13 17:05:55 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,10 @@ void	ants_distributor(t_lem *lem, t_paths_list *paths)
 {
 	int					count_paths;
 	int					*rooms_number;
-	t_ants_position 	*ants_position;
+	t_ants_position 	*ants_positions;
 
 	count_paths = count_number_of_paths(paths);
 	rooms_number = count_rooms_in_paths(paths, count_paths);
-	ants_position = create_array_ants_position(lem);
+	ants_positions = create_array_ants_position(lem);
+	move_and_print_ants()
 }

@@ -6,7 +6,7 @@
 /*   By: wanton <wanton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 17:04:12 by wanton            #+#    #+#             */
-/*   Updated: 2020/09/13 16:24:11 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/13 17:03:20 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,9 @@ void						set_all_visit(t_lem *lem, int visit_flag);
 */
 
 void						ants_distributor(t_lem *lem, t_paths_list *paths);
+void						move_and_print_ants(t_lem *lem,
+							t_ants_position *ants_pos, int *rooms_numbers,
+							int count_paths);
 
 #endif
 
