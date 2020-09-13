@@ -6,7 +6,7 @@
 /*   By: wanton <wanton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 15:16:57 by wanton            #+#    #+#             */
-/*   Updated: 2020/09/13 16:24:11 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/13 17:04:07 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,32 @@ t_ants_position	*create_array_ants_position(t_lem *lem)
 {
 	int				i;
 	t_ants_position	*arr;
+	t_ants_position *new_ant;
+	t_ants_position *tmp;
 
-	arr = (t_ants_position *)malloc(sizeof(t_ants_position) * lem->count_ants);
-	if (arr == NULL)
-		exit_with_malloc_error();
-	
+	i = 1;
+	arr = create_new_ant(lem, i++);
+	tmp = arr;
+	while (i <= lem->count_ants)
+	{
+		new_ant = create_new_ant(lem, i++);
+		tmp->next = new_ant;
+		tmp = new_ant;
+	}
+	tmp = NULL;
+	new_ant = NULL;
+	//TODO delete this
+	/*tmp = arr;
+	while (tmp != NULL)
+	{
+		ft_putstr("ant ");
+		ft_putnbr(tmp->ant_number);
+		ft_putstr(" path is ");
+		ft_putnbr(tmp->path_number);
+		ft_putchar('\n');
+		tmp = tmp->next;
+	}*/
+	return (arr);
 }
 
 //TODO delete this
@@ -80,5 +101,5 @@ void	ants_distributor(t_lem *lem, t_paths_list *paths)
 
 	count_paths = count_number_of_paths(paths);
 	rooms_number = count_rooms_in_paths(paths, count_paths);
-	
+	ants_position = create_array_ants_position(lem);
 }

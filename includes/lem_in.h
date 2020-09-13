@@ -6,7 +6,7 @@
 /*   By: wanton <wanton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 17:04:12 by wanton            #+#    #+#             */
-/*   Updated: 2020/09/13 15:58:06 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/13 16:24:11 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,10 @@ struct						s_lem
 
 struct						s_ant_position
 {
+	int						ant_number;
 	int						path_number;
 	int						room_number;
+	struct s_ant_position	*next;
 };
 
 /*
@@ -118,6 +120,12 @@ int							check_comment(const char *line);
 */
 
 int							count_rooms(t_room_address *path);
+
+/*
+**t_ant_position functions
+*/
+
+t_ants_position				*create_new_ant(t_lem *lem, int number);
 
 /*
 **find path functions
