@@ -128,11 +128,12 @@ int							count_rooms(t_room_address *path);
 t_ants_position				*create_new_ant(t_lem *lem, int number);
 
 /*
-**find path functions
+**t_path_list functions
 */
 
 void 						add_in_paths_list(t_paths_list **list,
 							 t_room_address *cur);
+void						reverse_path_list(t_paths_list **head);
 t_room						*find_next(t_room *room, int index);
 t_room_address				*find_path(t_lem *lem);
 t_room_address				*get_path_by_index(t_paths_list *paths, int index);

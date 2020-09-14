@@ -6,7 +6,7 @@
 /*   By: bedavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 17:10:48 by bedavis           #+#    #+#             */
-/*   Updated: 2020/09/13 15:33:01 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/14 12:36:24 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,24 @@ t_room_address		*get_path_by_index(t_paths_list *paths, int index)
 		p = p->next;
 	}
 	return (NULL);
+}
+
+void				reverse_path_list(t_paths_list **head)
+{
+	t_paths_list		*curr;
+	t_paths_list		*next;
+	t_paths_list		*prev;
+
+	if (*head == NULL)
+		return;
+	prev = NULL;
+	curr = *head;
+	while(curr)
+	{
+		next = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next;
+	}
+	*head = prev;
 }

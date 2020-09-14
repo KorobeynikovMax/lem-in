@@ -102,5 +102,4 @@ void	ants_distributor(t_lem *lem, t_paths_list *paths)
 	count_paths = count_number_of_paths(paths);
 	rooms_number = count_rooms_in_paths(paths, count_paths);
 	ants_positions = create_array_ants_position(lem);
-	move_and_print_ants()
 }

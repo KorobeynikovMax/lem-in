@@ -6,7 +6,7 @@
 /*   By: bedavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 15:19:24 by bedavis           #+#    #+#             */
-/*   Updated: 2020/09/13 15:33:01 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/14 12:41:14 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void				solve(t_lem *lem)
 
 	paths_list = NULL;
 	find_path_cikly(lem, &paths_list);
+	reverse_path_list(&paths_list);
 	ants_distributor(lem, paths_list);
 /*
 ** Посмотреть текущие пути
