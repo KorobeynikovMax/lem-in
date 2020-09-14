@@ -6,47 +6,45 @@
 /*   By: wanton <wanton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 17:18:19 by wanton            #+#    #+#             */
-/*   Updated: 2020/09/13 17:18:19 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/14 14:48:41 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_ants_position		*chose_ant(t_ants_position *first_ant)
+int			is_close_path(t_paths_list *path)
 {
-	t_ants_position		*ant;
-
-	ant = first_ant;
-	while (ant != NULL)
-	{
-		if (ant->path_number != PATH_NUMBER_CLOSE)
-			return (ant);
-		ant = ant->next;
-	}
-	return (NULL);
+	if (path->ants_queue == 0 && path->active_ants == 0)
+		return (1);
+	return (0);
 }
 
-void		move_and_print_ants(t_lem *lem, t_ants_position *ants_pos,
-						  int *rooms_numbers, int count_paths) {
-	int					i;
-	int					flag;
-	t_ants_position		*ant;
 
-	flag = 1;
-	while (flag == 1)
+
+void		transport_ants_to_next_room(t_lem *lem, t_paths_list *head,
+								int *ant_num)
+{
+	t_paths_list		*current_path;
+
+	current_path = head;
+	while (current_path != NULL)
 	{
-		flag = 0;
-		i = 0;
-		ant = ants_pos;
-		while (i++ < count_paths)
-		{
-			if (ant->path_number == PATH_NUMBER_CLOSE)
-				i--;
-			else
-			{
-				flag = 1;
-			}
-			ant = ant->next == NULL ? ants_pos : ant->next;
-		}
+		if (is_close_path(current_path))
+			break ;
+		current_path = current_path->next;
+	}
+}
+
+void		move_and_print_ants(t_lem *lem, t_paths_list *head)
+{
+	int					flag;
+	int					ant_number;
+
+	ant_number = 1;
+	flag = 1;
+	while (flag)
+	{
+		flag = transport_ants(lem, head, &ant_number);
+		ft_putchar('\n');
 	}
 }

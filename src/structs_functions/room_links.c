@@ -32,6 +32,7 @@ void				addInRoomList(t_room_address **list, t_room *room)
 	t_room_address  *tmp;
 
 	tmp = (t_room_address *)malloc(sizeof(t_room_address));
+	tmp->visitor_number = START_ROOM_NUMBER;
 	tmp->address = room;
 	tmp->next = *list;
 	*list = tmp;

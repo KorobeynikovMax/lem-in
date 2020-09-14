@@ -6,7 +6,7 @@
 /*   By: wanton <wanton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 15:16:57 by wanton            #+#    #+#             */
-/*   Updated: 2020/09/13 17:05:55 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/14 13:32:24 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,53 +27,28 @@ int				count_number_of_paths(t_paths_list *first_path)
 	return (count);
 }
 
-int				*count_rooms_in_paths(t_paths_list *paths, int count_paths)
+void				count_rooms_in_paths(t_paths_list *head)
 {
-	int		i;
-	int		*rooms_number;
+	t_paths_list	*current_path;
 
-	i = 0;
-	rooms_number = (int *)malloc(sizeof(int) * (count_paths + 1));
-	if (rooms_number == NULL)
-		exit_with_malloc_error();
-	while (i < count_paths)
+	current_path = head;
+	while (current_path != NULL)
 	{
-		rooms_number[i] = count_rooms(get_path_by_index(paths, i));
-		i++;
+		current_path->rooms_count = count_rooms(current_path->path);
+		current_path = current_path->next;
 	}
-	return (rooms_number);
-}
-
-t_ants_position	*create_array_ants_position(t_lem *lem)
-{
-	int				i;
-	t_ants_position	*arr;
-	t_ants_position *new_ant;
-	t_ants_position *tmp;
-
-	i = 1;
-	arr = create_new_ant(lem, i++);
-	tmp = arr;
-	while (i <= lem->count_ants)
+	//TODO delete this:
+	/*current_path = head;
+	int i = 0;
+	while (current_path)
 	{
-		new_ant = create_new_ant(lem, i++);
-		tmp->next = new_ant;
-		tmp = new_ant;
-	}
-	tmp = NULL;
-	new_ant = NULL;
-	//TODO delete this
-	/*tmp = arr;
-	while (tmp != NULL)
-	{
-		ft_putstr("ant ");
-		ft_putnbr(tmp->ant_number);
-		ft_putstr(" path is ");
-		ft_putnbr(tmp->path_number);
-		ft_putchar('\n');
-		tmp = tmp->next;
+		ft_putstr("Path ");
+		ft_putnbr(i++);
+		ft_putstr(" has ");
+		ft_putnbr(current_path->rooms_count);
+		ft_putstr(" rooms\n");
+		current_path = current_path->next;
 	}*/
-	return (arr);
 }
 
 //TODO delete this
@@ -93,13 +68,26 @@ void			print_numbers(int	*n, int size)
 	}
 }
 
+void			create_ants_queue(t_lem *lem, t_paths_list *head)
+{
+	int				count_ants;
+	t_paths_list	*shortest_path;
+
+	count_ants = lem->count_ants;
+	while (count_ants > 0)
+	{
+		shortest_path = get_shortest_path_list(head);
+		shortest_path->ants_queue++;
+		count_ants--;
+	}
+}
+
 void	ants_distributor(t_lem *lem, t_paths_list *paths)
 {
 	int					count_paths;
-	int					*rooms_number;
-	t_ants_position 	*ants_positions;
 
 	count_paths = count_number_of_paths(paths);
-	rooms_number = count_rooms_in_paths(paths, count_paths);
-	ants_positions = create_array_ants_position(lem);
+	count_rooms_in_paths(paths);
+	create_ants_queue(lem, paths);
+	move_and_print_ants(lem, paths);
 }

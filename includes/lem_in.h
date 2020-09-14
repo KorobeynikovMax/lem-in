@@ -6,7 +6,7 @@
 /*   By: wanton <wanton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 17:04:12 by wanton            #+#    #+#             */
-/*   Updated: 2020/09/13 17:03:20 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/14 14:48:17 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,16 @@ struct						s_room
 
 struct						s_room_address
 {
+	int						visitor_number;
 	t_room					*address;
 	struct s_room_address	*next;
 };
 
 struct						s_paths_list
 {
+	int						ants_queue;
+	int						active_ants;
+	int						rooms_count;
 	t_room_address			*path;
 	struct s_paths_list		*next;
 };
@@ -135,6 +139,7 @@ void 						add_in_paths_list(t_paths_list **list,
 							 t_room_address *cur);
 void						reverse_path_list(t_paths_list **head);
 t_room						*find_next(t_room *room, int index);
+t_paths_list				*get_shortest_path_list(t_paths_list *head);
 t_room_address				*find_path(t_lem *lem);
 t_room_address				*get_path_by_index(t_paths_list *paths, int index);
 
@@ -155,9 +160,9 @@ void						set_all_visit(t_lem *lem, int visit_flag);
 */
 
 void						ants_distributor(t_lem *lem, t_paths_list *paths);
-void						move_and_print_ants(t_lem *lem,
-							t_ants_position *ants_pos, int *rooms_numbers,
-							int count_paths);
+int							transport_ants(t_lem *lem, t_paths_list *path,
+						int *ant_num);
+void						move_and_print_ants(t_lem *lem, t_paths_list *head);
 
 #endif
 

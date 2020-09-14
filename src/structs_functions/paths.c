@@ -6,7 +6,7 @@
 /*   By: bedavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 17:10:48 by bedavis           #+#    #+#             */
-/*   Updated: 2020/09/14 12:36:24 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/14 13:02:07 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ void 				add_in_paths_list(t_paths_list **list, t_room_address *cur)
 	t_paths_list *tmp;
 
 	tmp = (t_paths_list *)malloc(sizeof(t_paths_list));
+	if (tmp == NULL)
+		exit_with_malloc_error();
+	tmp->ants_queue = 0;
+	tmp->active_ants = 0;
+	tmp->rooms_count = 0;
 	tmp->path = cur;
 	tmp->next = *list;
 	*list = tmp;
@@ -82,6 +87,31 @@ t_room_address		*get_path_by_index(t_paths_list *paths, int index)
 		p = p->next;
 	}
 	return (NULL);
+}
+
+t_paths_list		*get_shortest_path_list(t_paths_list *head)
+{
+	t_paths_list	*curr;
+	t_paths_list	*shortest_path_list;
+	int				count_steps;
+	int				min_steps;
+
+	curr = head;
+	min_steps = curr->rooms_count + curr->ants_queue;
+	shortest_path_list = curr;
+	curr = curr->next;
+	while (curr != NULL)
+	{
+		count_steps = curr->rooms_count + curr->ants_queue;
+		if (count_steps < min_steps)
+		{
+			min_steps = count_steps;
+			shortest_path_list = curr;
+		}
+		curr = curr->next;
+	}
+	curr = NULL;
+	return (shortest_path_list);
 }
 
 void				reverse_path_list(t_paths_list **head)
