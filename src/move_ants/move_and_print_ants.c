@@ -6,7 +6,7 @@
 /*   By: wanton <wanton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 17:18:19 by wanton            #+#    #+#             */
-/*   Updated: 2020/09/14 14:48:41 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/16 13:34:31 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ void		transport_ants_to_next_room(t_lem *lem, t_paths_list *head,
 
 void		move_and_print_ants(t_lem *lem, t_paths_list *head)
 {
-	int					flag;
+	int					is_ants_end;
 	int					ant_number;
 
 	ant_number = 1;
-	flag = 1;
-	while (flag)
+	is_ants_end = 0;
+	while (is_ants_end == 0)
 	{
-		flag = transport_ants(lem, head, &ant_number);
+		is_ants_end = make_one_move(lem, head, &ant_number);
 		ft_putchar('\n');
 	}
 }

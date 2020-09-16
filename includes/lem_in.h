@@ -160,7 +160,7 @@ void						set_all_visit(t_lem *lem, int visit_flag);
 */
 
 void						ants_distributor(t_lem *lem, t_paths_list *paths);
-int							transport_ants(t_lem *lem, t_paths_list *path,
+int							make_one_move(t_lem *lem, t_paths_list *path,
 						int *ant_num);
 void						move_and_print_ants(t_lem *lem, t_paths_list *head);
 
