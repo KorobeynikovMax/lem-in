@@ -6,7 +6,7 @@
 /*   By: wanton <wanton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 17:04:12 by wanton            #+#    #+#             */
-/*   Updated: 2020/09/14 14:48:17 by wanton           ###   ########.fr       */
+/*   Updated: 2020/09/16 15:16:20 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,10 +159,15 @@ void						set_all_visit(t_lem *lem, int visit_flag);
 **Function for move and print ants
 */
 
+int							is_new_path(t_paths_list *path);
 void						ants_distributor(t_lem *lem, t_paths_list *paths);
-int							make_one_move(t_lem *lem, t_paths_list *path,
-						int *ant_num);
 void						move_and_print_ants(t_lem *lem, t_paths_list *head);
+void						change_path_list_param(t_lem *lem,
+								t_paths_list *path, t_room_address *room);
+void						put_new_ant_on_path(t_lem *lem, t_paths_list *path,
+							int ant_n);
+void						print_ant(t_room_address *room);
+void						move_group_ants(t_lem *lem, t_paths_list *path);
 
 #endif
 
