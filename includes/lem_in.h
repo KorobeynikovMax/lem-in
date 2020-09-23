@@ -83,10 +83,9 @@ struct						s_ant_position
 
 void						parse_map(t_lem *lem);
 void						solve(t_lem *lem);
-void						parseLinksRooms(t_lem *lem, char *line);
+void						parse_links_rooms(t_lem *lem, char *line);
 char						*parse_rooms(t_lem *lem);
-t_room						*findRoom(t_lem *lem, char *room);
-t_room						*findStartEndRoom(t_lem *lem, int flag);
+t_room						*find_room(t_lem *lem, char *room);
 
 /*
 **Functions for error message
@@ -151,7 +150,7 @@ int							put_numbers_from_links(t_room_address *address,
 													  int index);
 int 						count_of_rooms(t_lem *lem);
 void						delete_room_links(t_room *room);
-void						addInRoomList(t_room_address **list, t_room *room);
+void						addin_roomlist(t_room_address **list, t_room *room);
 void						put_numbers(t_lem *lem);
 void						set_all_visit(t_lem *lem, int visit_flag);
 

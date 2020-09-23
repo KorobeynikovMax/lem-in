@@ -27,7 +27,7 @@ void				delete_room_links(t_room *room)
 	room->links = NULL;
 }
 
-void				addInRoomList(t_room_address **list, t_room *room)
+void				addin_roomlist(t_room_address **list, t_room *room)
 {
 	t_room_address  *tmp;
 

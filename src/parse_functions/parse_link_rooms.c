@@ -51,7 +51,7 @@ int					isValidLink(char *line, char **r1, char **r2)
 ** return the room with name r1 or NULL
 */
 
-t_room				*findRoom(t_lem *lem, char *room)
+t_room				*find_room(t_lem *lem, char *room)
 {
 	t_room			*tmp;
 
@@ -79,8 +79,8 @@ static void			addLink(t_lem *lem, char *r1, char *r2)
 	t_room_address  *b;
 	t_room_address  *tmp;
 
-	p1 = findRoom(lem,r1);
-	p2 = findRoom(lem, r2);
+	p1 = find_room(lem,r1);
+	p2 = find_room(lem, r2);
 	if (p1 == NULL || p2 == NULL || p1 == p2)
 		return;
 	a = (t_room_address *)malloc(sizeof(t_room_address));
@@ -99,7 +99,7 @@ static void			addLink(t_lem *lem, char *r1, char *r2)
 	free(r2);
 }
 
-void				parseLinksRooms(t_lem *lem, char *line)
+void				parse_links_rooms(t_lem *lem, char *line)
 {
 	char			*r1;
 	char			*r2;
@@ -113,7 +113,7 @@ void				parseLinksRooms(t_lem *lem, char *line)
 		if (line)
 			free(line);
 		pft_get_next_line(DESCRIPTOR, &line);
-		if (line[0] == '\0')
+		if (line == NULL || line[0] == '\0')
 		{
 			free(line);
 			break;
@@ -122,5 +122,7 @@ void				parseLinksRooms(t_lem *lem, char *line)
 			exit_with_not_valid_map();
 		else
 			addLink(lem, r1, r2);
+		if (ft_strchr(line, EOF))
+			break;
 	}
 }

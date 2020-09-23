@@ -70,9 +70,9 @@ int				main()
 	init_lem(&lem);
 	parse_map(lem);
 	solve(lem);
-	printf("it works!\n");
-	print_number_of_ants(lem);
-	print_t_room(lem);
+	//printf("it works!\n");
+	//print_number_of_ants(lem);
+	//print_t_room(lem);
 	free_t_lem(lem);
 	return (0);
 }

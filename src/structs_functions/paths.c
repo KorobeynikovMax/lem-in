@@ -52,14 +52,14 @@ t_room_address 		*find_path(t_lem *lem)
 	if (lem->end_room->visit_flag == 0)
 		return (NULL);
 	index = lem->end_room->visit_flag - 1;
-	addInRoomList(&result, lem->end_room);
+	addin_roomlist(&result, lem->end_room);
 	prev = lem->end_room;
 	while (1)
 	{
 		next = find_next(prev, index);
 		if (next == NULL)
 			break;
-		addInRoomList(&result, next);
+		addin_roomlist(&result, next);
 		if (prev->start_end_flag == 0)
 			prev->visit_flag = -1;
 		prev = next;
