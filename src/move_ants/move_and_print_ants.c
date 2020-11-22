@@ -6,7 +6,7 @@
 /*   By: wanton <wanton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 17:18:19 by wanton            #+#    #+#             */
-/*   Updated: 2020/09/16 15:16:20 by wanton           ###   ########.fr       */
+/*   Updated: 2020/11/22 17:32:37 by wanton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void		move_and_print_ants(t_lem *lem, t_paths_list *head)
 	while (is_ants_end == 0)
 	{
 		is_ants_end = make_one_move(lem, head, &ant_number);
-		ft_putchar('\n');
+		if (!is_ants_end)
+			ft_putchar('\n');
 	}
 }
